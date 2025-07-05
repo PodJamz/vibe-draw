@@ -1,5 +1,5 @@
 # Run Celery worker for processing Claude requests
-from app.core.celery_app import celery_app
+from app.core.celery_app import celery_app  # noqa: F401
 import os
 
 def run_worker():

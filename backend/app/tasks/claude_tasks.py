@@ -4,7 +4,7 @@ from app.core.celery_app import celery_app
 from app.core.config import settings
 from app.tasks.tasks import AsyncAITask, GenericPromptTask, DEFAULT_MAX_TOKENS, DEFAULT_TEMPERATURE
 from app.core.redis import redis_service
-from typing import Dict, Any, Optional, List, Union
+from typing import Dict, Any, Optional
 
 # Default model configuration for Claude
 DEFAULT_MODEL = "claude-3-7-sonnet-20250219"

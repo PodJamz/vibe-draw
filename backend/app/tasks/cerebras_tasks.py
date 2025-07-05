@@ -1,9 +1,8 @@
-import asyncio
 from cerebras.cloud.sdk import AsyncCerebras
 from app.core.celery_app import celery_app
 from app.core.config import settings
 from app.tasks.tasks import AsyncAITask, GenericPromptTask, DEFAULT_MAX_TOKENS, DEFAULT_TEMPERATURE
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional
 
 # Default model configuration for Cerebras
 DEFAULT_MODEL = "llama3.1-8b"

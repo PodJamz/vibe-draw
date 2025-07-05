@@ -2,10 +2,10 @@ from fastapi import APIRouter, HTTPException, Request, Body, WebSocket, WebSocke
 from sse_starlette.sse import EventSourceResponse
 from app.api.models import (
     ClaudeResponse, StreamRequest, TaskResponse, TaskStatusResponse, 
-    GeminiImageResponse, TrellisRequest, TrellisResponse
+    GeminiImageResponse, TrellisRequest
 )
 from app.tasks.claude_tasks import ClaudePromptTask, ClaudeEditTask
-from app.tasks.gemini_tasks import GeminiPromptTask, GeminiImageGenerationTask
+from app.tasks.gemini_tasks import GeminiImageGenerationTask
 from app.tasks.cerebras_tasks import get_cerebras_client
 from app.core.redis import redis_service
 from app.core.config import settings
@@ -16,8 +16,6 @@ from typing import Dict, Any
 from celery.result import AsyncResult
 import re
 import httpx
-import os
-from fastapi import BackgroundTasks
 
 # Create the router
 router = APIRouter()
