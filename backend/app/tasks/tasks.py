@@ -1,6 +1,6 @@
 import asyncio
 from celery import Task
-from app.core.celery_app import celery_app
+from app.core.celery_app import celery_app  # noqa: F401  # Imported for Celery registration side effects
 from app.core.redis import redis_service
 from typing import Dict, Any, Optional, Protocol
 

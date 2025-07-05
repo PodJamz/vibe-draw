@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field
 from typing import Dict, Any, Optional, List, Union
-import uuid
 
 class ClaudePromptRequest(BaseModel):
     """Request model for Claude prompt requests."""

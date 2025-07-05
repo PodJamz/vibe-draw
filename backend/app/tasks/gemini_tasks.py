@@ -2,13 +2,13 @@ import asyncio
 import base64
 import os
 from io import BytesIO
-from google import genai
+import google.generativeai as genai
 from app.core.celery_app import celery_app
 from app.core.config import settings
 from app.tasks.tasks import AsyncAITask, GenericPromptTask, DEFAULT_MAX_TOKENS, DEFAULT_TEMPERATURE
 from app.core.redis import redis_service
 from typing import Dict, Any, Optional, List, Union
-from google.genai import types
+from google.generativeai import types
 from PIL import Image
 
 # Default model configuration for Gemini

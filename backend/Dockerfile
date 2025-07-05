@@ -22,5 +22,8 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH="/app"
 
-# Command to run
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Default to 4 workers, can be overridden at runtime
+ENV GUNICORN_WORKERS=4
+
+# Use Gunicorn with Uvicorn workers for better production performance
+CMD gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 --workers ${GUNICORN_WORKERS}
