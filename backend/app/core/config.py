@@ -1,7 +1,7 @@
 import os
 from pydantic import Field
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, List
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -26,8 +26,19 @@ class Settings(BaseSettings):
     CEREBRAS_API_KEY: Optional[str] = Field(default=os.getenv("CEREBRAS_API_KEY", None))
     TRELLIS_API_KEY: Optional[str] = Field(default=os.getenv("TRELLIS_API_KEY", None))
 
+    # CORS settings
+    ALLOWED_ORIGINS: List[str] = Field(default_factory=lambda: ["*"], description="Comma separated list of allowed CORS origins")
+    
+    # Logging settings
+    LOG_LEVEL: str = Field(default=os.getenv("LOG_LEVEL", "info"))
+
     
     class Config:
         env_file = ".env"
+        case_sensitive = True
 
 settings = Settings()
+
+# Convert comma-separated origins if provided as a single string
+if isinstance(settings.ALLOWED_ORIGINS, str):
+    settings.ALLOWED_ORIGINS = [origin.strip() for origin in settings.ALLOWED_ORIGINS.split(",") if origin.strip()]
